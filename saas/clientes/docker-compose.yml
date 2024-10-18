@@ -1,0 +1,53 @@
+##AUTOGEN
+##FINAUTOGEN
+services:
+    odoo-control:
+        container_name: odoo-control
+        image: odoo:18.0
+        volumes:
+            - ./control/addons-extra:/mnt/extra-addons
+            - odoo-control-web-data:/var/lib/odoo
+        configs:
+            - source: odoo_conf_control
+              target: /etc/odoo/odoo.conf
+    postgres:
+        image: postgres:17
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_USER=${DB_USER}
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+            - odoo-db-data:/var/lib/postgresql/data/pgdata
+    nginx:
+        container_name: nginx
+        image: nginx:latest
+        restart: unless-stopped
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+        # Agregar en el directorio conf.d los archivos de configuración de nginx para cada cliente
+            - ./nginx/conf:/etc/nginx/conf.d
+        # Agregar en el directorio ssl los certificados de cada cliente
+            - ./certbot/conf:/etc/nginx/ssl
+            - ./certbot/data:/var/www/html
+volumes:
+    odoo-db-data:
+    odoo-control-web-data:
+
+configs:
+    odoo_conf_control:
+        content: |
+            [options]
+            addons_path = /mnt/extra-addons
+            data_dir = /var/lib/odoo
+            db_host = postgres
+            db_user = ${DB_USER}
+            db_name = ${DB_NAME}
+            db_password = ${DB_PASSWORD}
+            proxy_mode = True
+            max_cron_threads = 4
+            workers = 6
+            load_language = es_ES
+            list_db = False

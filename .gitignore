@@ -1,0 +1,11 @@
+.env
+ssl
+.DS_Store
+.vscode
+.idea
+addons
+ignorar
+__pycache__
+*.pyc
+enterprise
+control

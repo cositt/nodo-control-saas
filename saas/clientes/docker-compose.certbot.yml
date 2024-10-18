@@ -1,0 +1,9 @@
+services:
+    certbot:
+        container_name: control_certbot
+        image: certbot/certbot:latest
+        command: certonly --non-interactive --webroot --webroot-path=/var/www/html --email desarrollo@cositt.es --agree-tos --no-eff-email -d control.cositt.net
+        volumes:
+            - ./certbot/conf:/etc/letsencrypt
+            - ./certbot/logs:/var/log/letsencrypt
+            - ./certbot/data:/var/www/html
