@@ -15,7 +15,7 @@ services:
         container_name: postgres
         environment:
             - POSTGRES_DB=postgres
-            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_PASSWORD=${POSTGRES_PASS}
             - POSTGRES_USER=${POSTGRES_USER}
             - PGDATA=/var/lib/postgresql/data/pgdata
         volumes:
@@ -46,7 +46,7 @@ configs:
             db_host = postgres
             db_user = ${POSTGRES_USER}
             db_name = control
-            db_password = ${POSTGRES_PASSWORD}
+            db_password = ${POSTGRES_PASS}
             proxy_mode = True
             max_cron_threads = 4
             workers = 6
