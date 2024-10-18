@@ -15,15 +15,44 @@ Se utiliza un certificado ssl para la comunicación entre el cliente y el servid
 - Docker
 - Docker Compose
 
+## Certificado
+
+Si disponemos de una clave ssh, la agregamos a github:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+Si no disponemos de clave ssh, generamos una:
+
+```bash
+ssh-keygen -t ed25519 -C "control@cositt.net"
+```
+
+Cuando se nos pida un nombre ponemos:
+
+```bash
+/root/.ssh/saas-control
+```
+
+copiamos la clave publica al portal de github:
+
+```bash
+cat /root/.ssh/saas-control.pub
+
+```
+
+Ahora clonamos el repositorio de github dentro del directorio creado anteriormente:
+
+```bash
+GIT_SSH_COMMAND="ssh -i ~/.ssh/saas-control" git clone git@github.com:cositt/nodo-control-saas.git /opt/saas
+```
+
 ## Instalación
 
 Se debe instalar el contenido en /opt/saas
 
-```bash
-git clone https://github.com/cositt/nodo-control-saas.git /opt/saas
-```
-
-## Configuracion de los ficheros .env
+Configuracion de los ficheros .env
 
 Hay dos fichero .env requeridos, uno en el directorio saas y otro dentro de clientes, se pueden copiar de los ficheros .env.example que se encuentran en los mismos directorios.
 
