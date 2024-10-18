@@ -45,7 +45,8 @@ cat /root/.ssh/saas-control.pub
 Ahora clonamos el repositorio de github dentro del directorio creado anteriormente:
 
 ```bash
-GIT_SSH_COMMAND="ssh -i ~/.ssh/saas-control" git clone git@github.com:cositt/nodo-control-saas.git /opt/saas
+cd /opt
+GIT_SSH_COMMAND="ssh -i ~/.ssh/saas-control" git clone git@github.com:cositt/nodo-control-saas.git /opt/
 ```
 
 ## Instalación
