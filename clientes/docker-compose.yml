@@ -34,9 +34,6 @@ services:
         # Agregar en el directorio ssl los certificados de cada cliente
             - ./certbot/conf:/etc/nginx/ssl
             - ./certbot/data:/var/www/html
-        configs:
-            - source: nginx_conf
-              target: /etc/nginx/nginx.conf
 volumes:
     odoo-db-data:
     odoo-control-web-data:
@@ -56,5 +53,3 @@ configs:
             workers = 6
             load_language = es_ES
             #list_db = False
-    nginx_conf:
-        file: ./nginx/nginx.conf
