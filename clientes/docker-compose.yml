@@ -55,6 +55,6 @@ configs:
             max_cron_threads = 4
             workers = 6
             load_language = es_ES
-            list_db = False
+            #list_db = False
     nginx_conf:
         file: ./nginx/nginx.conf
