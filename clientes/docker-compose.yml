@@ -6,6 +6,7 @@ services:
         image: odoo:18.0
         volumes:
             - ./control/addons-extra:/mnt/extra-addons
+            - /opt/saas/enterprise/odoo-18.0:/mnt/enterprise
             - odoo-control-web-data:/var/lib/odoo
         configs:
             - source: odoo_conf_control
@@ -41,7 +42,7 @@ configs:
     odoo_conf_control:
         content: |
             [options]
-            addons_path = /mnt/extra-addons
+            addons_path = /mnt/extra-addons,/mnt/enterprise
             data_dir = /var/lib/odoo
             db_host = postgres
             db_user = ${POSTGRES_USER}
