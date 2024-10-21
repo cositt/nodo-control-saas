@@ -3,10 +3,10 @@
 services:
     odoo-control:
         container_name: odoo-control
-        image: odoo:18.0
+        image: odoo:17.0
         volumes:
             - ./control/addons-extra:/mnt/extra-addons
-            - /opt/saas/enterprise/odoo-18.0:/mnt/enterprise
+            - /opt/saas/enterprise/odoo-17.0:/mnt/enterprise
             - odoo-control-web-data:/var/lib/odoo
         configs:
             - source: odoo_conf_control
@@ -46,7 +46,7 @@ configs:
             data_dir = /var/lib/odoo
             db_host = postgres
             db_user = ${POSTGRES_USER}
-            db_name = control
+            db_name = control17
             db_password = ${POSTGRES_PASS}
             proxy_mode = True
             max_cron_threads = 4
