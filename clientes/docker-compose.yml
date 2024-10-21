@@ -46,7 +46,7 @@ configs:
             data_dir = /var/lib/odoo
             db_host = postgres
             db_user = ${POSTGRES_USER}
-            db_name = control17
+            db_name = controlen
             db_password = ${POSTGRES_PASS}
             proxy_mode = True
             max_cron_threads = 4
