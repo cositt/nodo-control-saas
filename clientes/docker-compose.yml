@@ -3,10 +3,10 @@
 services:
     odoo-control:
         container_name: odoo-control
-        image: odoo:17.0
+        image: odoo:18.0
         volumes:
-            - ./control/17.0/addons-extra:/mnt/extra-addons
-            - /opt/saas/enterprise/enterprise-17.0:/mnt/enterprise
+            - ./control/18.0/addons-extra:/mnt/extra-addons
+            - /opt/saas/enterprise/enterprise-18.0:/mnt/enterprise
             - odoo-control-web-data:/var/lib/odoo
         configs:
             - source: odoo_conf_control
@@ -53,4 +53,4 @@ configs:
             max_cron_threads = 4
             workers = 6
             load_language = es_ES
-            #list_db = False
+            list_db = False
