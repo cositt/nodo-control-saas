@@ -5,7 +5,7 @@ services:
         container_name: odoo-control
         image: odoo:17.0
         volumes:
-            - ./control/addons-extra:/mnt/extra-addons
+            - ./control/17.0/addons-extra:/mnt/extra-addons
             - /opt/saas/enterprise/enterprise-17.0:/mnt/enterprise
             - odoo-control-web-data:/var/lib/odoo
         configs:
