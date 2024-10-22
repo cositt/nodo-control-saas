@@ -6,7 +6,7 @@ services:
         image: odoo:17.0
         volumes:
             - ./control/addons-extra:/mnt/extra-addons
-            - /opt/saas/enterprise/odoo-17.0:/mnt/enterprise
+            - /opt/saas/enterprise/enterprise-17.0:/mnt/enterprise
             - odoo-control-web-data:/var/lib/odoo
         configs:
             - source: odoo_conf_control
