@@ -64,3 +64,11 @@ Para la creación del certificado SSL se debe ejecutar el siguiente comando desd
 ```bash
 docker-compose run --rm -f docker-compose.certbot.yml certbot
 ```
+
+## generar fichero htpasswd
+
+Para la creación del fichero htpasswd se debe ejecutar el siguiente comando:
+
+```bash
+docker run --rm -it -v /opt/saas/clientes/nginx/conf:/data alpine sh -c "apk add --no-cache apache2-utils && htpasswd -c /data/.htpasswd copias"
+```
