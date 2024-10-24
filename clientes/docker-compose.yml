@@ -54,4 +54,4 @@ configs:
             workers = 6
             load_language = es_ES
             without_demo = True
-            list_db = True
+            #list_db = False
